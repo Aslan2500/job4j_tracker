@@ -24,7 +24,7 @@ public class Error {
     public static void main(String[] args) {
         Error error1 = new Error();
         error1.showInfo();
-        Error error2 = new Error(true, 100, "Hello");
+        Error error2 = new Error(true, 10, "Hello");
         error2.showInfo();
         Error error3 = new Error(false, 250, "Ready");
         error3.showInfo();
