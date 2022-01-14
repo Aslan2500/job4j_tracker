@@ -26,14 +26,6 @@ public class Item {
         return created;
     }
 
-    public String startUI() {
-        Item newItem = new Item();
-        LocalDateTime present = newItem.getLocalDateTime();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        String currentDateTimeFormat = present.format(formatter);
-        return currentDateTimeFormat;
-    }
-
     public int getId() {
         return id;
     }
