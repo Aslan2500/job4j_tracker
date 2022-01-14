@@ -5,7 +5,7 @@ public class Dentist extends Doctor {
     private boolean childDentist;
 
     public Dentist(String name, String surname, boolean education, int birthday, boolean childDentist) {
-        super(name, surname, education, birthday);
+        super(name, surname, education, birthday, 5);
         this.childDentist = childDentist;
     }
 
