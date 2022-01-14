@@ -5,6 +5,10 @@ public class Book {
     private String name;
     private int pages;
 
+    public Book(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
@@ -21,4 +25,3 @@ public class Book {
         this.pages = pages;
     }
 }
-
