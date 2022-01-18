@@ -10,7 +10,6 @@ public class StartUI {
             UserAction action = actions[select];
             run = action.execute(input, tracker);
         }
-
     }
 
     private void showMenu(UserAction[] actions) {
@@ -23,8 +22,8 @@ public class StartUI {
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        UserAction[] actions = {new CreateAction(), new ReplaceAction(), new DeleteAction(), new ShowAction(),
-        new FindByIdAction(), new FindByNameAction(), new ExitAction()};
+        Item item = tracker.add(new Item("replaced"));
+        UserAction[] actions = {new ReplaceAction(), new ExitAction()};
         new StartUI().init(input, tracker, actions);
     }
 
