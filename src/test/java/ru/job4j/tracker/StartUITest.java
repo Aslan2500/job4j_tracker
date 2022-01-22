@@ -87,7 +87,7 @@ public class StartUITest {
                         + "0. Show all Items" + ln
                         + "1. Exit" + ln
                         + "=== Show all items ===" + ln
-                        + "Item{id = 1, name = 'test1' created = " + created.format(FORMATTER) + "}" + ln
+                        + one + ln
                         + "Menu:" + ln
                         + "0. Show all Items" + ln
                         + "1. Exit" + ln
@@ -127,7 +127,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new StubInput(
-                new String[] {"0", "1", "1"}
+                new String[] {"0", String.valueOf(one.getId()), "1"}
         );
         UserAction[] actions = new UserAction[]{
                 new FindByIdAction(out),
@@ -140,7 +140,7 @@ public class StartUITest {
                         + "0. Find Item by it's id" + ln
                         + "1. Exit" + ln
                         + "=== Find item by id ===" + ln
-                        + "Item{id = 1, name = 'test1' created = " + created.format(FORMATTER) + "}" + ln
+                        + one + ln
                         + "Menu:" + ln
                         + "0. Find Item by it's id" + ln
                         + "1. Exit" + ln
