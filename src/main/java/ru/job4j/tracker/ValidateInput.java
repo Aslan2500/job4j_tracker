@@ -14,18 +14,6 @@ public class ValidateInput extends ConsoleInput {
         return in.askStr(question);
     }
 
-    private boolean isNumber(String value) {
-        boolean rsl = true;
-        char[] check = value.toCharArray();
-        for (char num : check) {
-            if (num < 48 || num > 57) {
-                rsl = false;
-                break;
-            }
-        }
-        return rsl;
-    }
-
     @Override
     public int askInt(String question) {
         boolean invalid = true;
