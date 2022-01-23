@@ -4,11 +4,13 @@ public class UserStore {
 
     public static User findUser(User[] users, String login) throws UserNotFoundException {
         int index = -1;
-        for (int i = 0; i < users.length; i++) {
-            if (users[i].getUsername().equals(login)) {
-                index = i;
+        int counter = 0;
+        for (User use : users) {
+            if (use.equals(login)) {
+                index = counter;
                 break;
             }
+            counter++;
         }
         if (index == -1) {
             throw new UserNotFoundException("User not found");
@@ -17,11 +19,10 @@ public class UserStore {
     }
 
     public static boolean validate(User user) throws UserInvalidException {
-        if (user.isValid() && user.getUsername().length() >= 3) {
-            return true;
-        } else {
+        if (!user.isValid() && user.getUsername().length() < 3) {
             throw new UserInvalidException("User is not valid");
         }
+        return true;
     }
 
     public static void main(String[] args) {
