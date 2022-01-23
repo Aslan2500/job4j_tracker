@@ -193,7 +193,7 @@ public class StartUITest {
                         + "0. Find Item by it's name" + ln
                         + "1. Exit" + ln
                         + "=== Find items by name ===" + ln
-                        + "Item{id = 1, name = 'test1' created = " + created.format(FORMATTER) + "}" + ln
+                        + one + ln
                         + "Menu:" + ln
                         + "0. Find Item by it's name" + ln
                         + "1. Exit" + ln
@@ -224,4 +224,3 @@ public class StartUITest {
         );
     }
 }
-
