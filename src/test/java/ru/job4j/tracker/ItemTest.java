@@ -14,15 +14,8 @@ public class ItemTest {
 
     @Test
     public void compareTo() {
-        List<Item> items = new ArrayList<>();
-        Item item1 = new Item("Abc");
-        Item item2 = new Item("Dca");
-        Item item3 = new Item("Cab");
-        Item item4 = new Item("Bca");
-        items.add(item1);
-        items.add(item2);
-        items.add(item3);
-        items.add(item4);
+        List<Item> items = Arrays.asList(new Item("Abc"), new Item("Dca"),
+                new Item("Cab"), new Item("Bca"));
         Collections.sort(items, new ItemAscByName());
         List<Item> expected = Arrays.asList(new Item("Abc"), new Item("Bca"),
                 new Item("Cab"), new Item("Dca"));
@@ -31,15 +24,8 @@ public class ItemTest {
 
     @Test
     public void compareToReverse() {
-        List<Item> items = new ArrayList<>();
-        Item item1 = new Item("Abc");
-        Item item2 = new Item("Dca");
-        Item item3 = new Item("Cab");
-        Item item4 = new Item("Bca");
-        items.add(item1);
-        items.add(item2);
-        items.add(item3);
-        items.add(item4);
+        List<Item> items = Arrays.asList(new Item("Dca"), new Item("Bca"),
+                new Item("Cab"), new Item("Abc"));
         Collections.sort(items, new ItemDescByName());
         List<Item> expected = Arrays.asList(new Item("Dca"), new Item("Cab"),
                 new Item("Bca"), new Item("Abc"));
