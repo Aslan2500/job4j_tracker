@@ -8,7 +8,7 @@ public class FunctionalInterfaces {
         Map<Integer, String> map = new HashMap<>();
         BiConsumer<Integer, String> biCon = (s, s1) -> map.put(s, s1);
         biCon.accept(1, "one");
-        biCon.accept(2, "one");
+        biCon.accept(2, "two");
         biCon.accept(3, "three");
         biCon.accept(4, "four");
         biCon.accept(5, "five");
@@ -21,9 +21,11 @@ public class FunctionalInterfaces {
                 System.out.println("key: " + i + " value: " + map.get(i));
             }
         }
-        Supplier<List<String>> sup = () -> new ArrayList<>();
-
+        Supplier<List<String>> sup = () -> new ArrayList<>(map.values());
         Consumer<String> con = s -> System.out.println(s);
         Function<String, String> func = s -> s.toUpperCase(Locale.ROOT);
+        for (String s : sup.get()) {
+            con.accept(func.apply(s));
+        }
     }
 }
