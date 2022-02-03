@@ -8,14 +8,12 @@ public class ScopeInside {
         int total = 0;
         int res = 0;
         for (int n : number) {
+            int finalTotal = total;
             total = add(
-                    () -> {
-                        return n;
-                    }
+                    () -> finalTotal + n
             );
-            res += total;
         }
-        System.out.println(res);
+        System.out.println(total);
     }
 
     private static Integer add(Supplier<Integer> calc) {
