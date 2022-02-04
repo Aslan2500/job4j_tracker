@@ -9,7 +9,7 @@ import java.util.LinkedList;
  * @version 1.0
  */
 public class PriorityQueue {
-    private LinkedList<Task> tasks = new LinkedList<>();
+    private LinkedList<Task> tasks = new LinkedList<Task>();
 
     /**
      * Метод принимает на вход заявку и добавляет ее в очередь.
@@ -18,8 +18,8 @@ public class PriorityQueue {
      * @param task задача, которая добавляется в очередь
      */
     public void put(Task task) {
-        int i = 0;
-        for (Task element : tasks) {
+        var i = 0;
+        for (var element : tasks) {
             if (task.getPriority() < element.getPriority()) {
                 break;
             }
