@@ -58,11 +58,15 @@ public class BankService {
      * @return если найден пользователь и найден аккаунт у пользователя,
      * то метод возвращает данный аккаунт, в ином случае метод возвращает null
      */
-    public Account findByRequisite(String passport, String requisite) {
+    public Optional<Account> findByRequisite(String passport, String requisite) {
         Optional<User> user = findByPassport(passport);
-        return user.flatMap(value -> users.get(value).stream()
-                .filter(req -> req.getRequisite().equals(requisite))
-                .findFirst()).orElse(null);
+        if (user.isPresent()) {
+            return user.flatMap(value -> users.get(value)
+                    .stream()
+                    .filter(pass -> pass.getRequisite().equals(requisite))
+                    .findFirst());
+        }
+        return null;
     }
 
     /**
@@ -79,11 +83,11 @@ public class BankService {
      */
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
-        Account accSrc = findByRequisite(srcPassport, srcRequisite);
-        Account accDest = findByRequisite(destPassport, destRequisite);
-        if (accSrc != null && accDest != null && accSrc.getBalance() >= amount) {
-            accSrc.setBalance(accSrc.getBalance() - amount);
-            accDest.setBalance(accDest.getBalance() + amount);
+        Optional<Account> accSrc = findByRequisite(srcPassport, srcRequisite);
+        Optional<Account> accDest = findByRequisite(destPassport, destRequisite);
+        if (accSrc.isPresent() && accDest.isPresent() && accSrc.get().getBalance()  >= amount) {
+            accSrc.get().setBalance(accSrc.get().getBalance() - amount);
+            accDest.get().setBalance(accDest.get().getBalance() + amount);
             return true;
         }
         return false;
