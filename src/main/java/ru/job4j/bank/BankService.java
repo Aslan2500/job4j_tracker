@@ -66,7 +66,7 @@ public class BankService {
                     .filter(pass -> pass.getRequisite().equals(requisite))
                     .findFirst());
         }
-        return null;
+        return Optional.empty();
     }
 
     /**
