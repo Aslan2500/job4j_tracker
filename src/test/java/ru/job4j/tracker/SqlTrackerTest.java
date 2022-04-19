@@ -20,7 +20,7 @@ import static org.junit.Assert.assertThat;
 
 public class SqlTrackerTest {
 
-    static Connection connection;
+    private static Connection connection;
 
     @BeforeClass
     public static void initConnection() {
@@ -66,7 +66,7 @@ public class SqlTrackerTest {
         tracker.add(item1);
         Item item2 = new Item("NewItem");
         tracker.replace(item1.getId(), item2);
-        assertThat(tracker.findById(item1.getId()), is(item2));
+        assertThat(tracker.findById(item1.getId()).getName(), is(item2.getName()));
     }
 
     @Test
@@ -83,8 +83,14 @@ public class SqlTrackerTest {
         SqlTracker tracker = new SqlTracker(connection);
         List<Item> rsl = new ArrayList<>();
         Item item1 = new Item("item1");
+        Item item2 = new Item("item2");
+        Item item3 = new Item("item3");
+        Item item4 = new Item("item4");
         rsl.add(item1);
         tracker.add(item1);
+        tracker.add(item2);
+        tracker.add(item3);
+        tracker.add(item4);
         assertThat(tracker.findByName("item1"), is(rsl));
     }
 
