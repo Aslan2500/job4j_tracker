@@ -17,7 +17,7 @@ public class CreateSameItems implements UserAction {
         out.println("=== Create Items with the same name ====");
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
-        for (int i = 0; i < 2000000000; i++) {
+        for (int i = 0; i < 1000; i++) {
             memTracker.add(item);
         }
         return true;
